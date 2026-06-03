@@ -25,13 +25,25 @@
   <main>
     <section class="hero" id="home">
       <div class="hero-inner">
-        <p class="eyebrow">Infrastructure • Automation • Observability</p>
-        <h1>Modern DevOps engineering for cloud-native teams.</h1>
-        <p class="hero-copy">I build and operate resilient platforms using Kubernetes, GitOps, CI/CD, and observability tooling. My work is focused on secure, automated delivery pipelines and scalable infrastructure.</p>
-        <div class="cta-group">
+        <p class="eyebrow animate-on-scroll">Infrastructure • Automation • Observability</p>
+        <h1 class="hero-title animate-on-scroll">Modern DevOps engineering for cloud-native teams.</h1>
+        <p class="hero-copy animate-on-scroll">I build and operate resilient platforms using Kubernetes, GitOps, CI/CD, and observability tooling. My work is focused on secure, automated delivery pipelines and scalable infrastructure.</p>
+        <div class="cta-group animate-on-scroll">
           <a class="btn btn-primary" href="#contact">Work with me</a>
           <a class="btn btn-secondary" href="#projects">See projects</a>
         </div>
+        <div class="hero-badges animate-on-scroll">
+          <span class="tech-pill">Kubernetes</span>
+          <span class="tech-pill">GitOps</span>
+          <span class="tech-pill">CI/CD</span>
+          <span class="tech-pill">Observability</span>
+          <span class="tech-pill">Security</span>
+        </div>
+      </div>
+      <div class="hero-accent-row animate-on-scroll">
+        <span class="accent-dot"></span>
+        <span class="accent-dot"></span>
+        <span class="accent-dot"></span>
       </div>
     </section>
 
@@ -165,5 +177,22 @@
     <span>Designed for a modern DevOps portfolio.</span>
     <span>Built by GuyT2002.</span>
   </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const animateElements = document.querySelectorAll('.animate-on-scroll');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.2
+      });
+
+      animateElements.forEach((el) => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
