@@ -24,6 +24,13 @@
 
   <main>
     <section class="hero" id="home">
+      <div class="hero-bg">
+        <div class="hero-bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80');"></div>
+        <button class="hero-slide-control prev" aria-label="Previous background">‹</button>
+        <button class="hero-slide-control next" aria-label="Next background">›</button>
+      </div>
       <div class="hero-inner">
         <p class="eyebrow animate-on-scroll">Infrastructure • Automation • Observability</p>
         <h1 class="hero-title animate-on-scroll">Modern DevOps engineering for cloud-native teams.</h1>
@@ -76,36 +83,6 @@
       </div>
     </section>
 
-    <section class="section" id="skills">
-      <div class="section-heading">
-        <div class="eyebrow">Skills</div>
-        <h2>Core competencies</h2>
-      </div>
-      <div class="skill-grid">
-        <span class="skill-card">Kubernetes / OpenShift</span>
-        <span class="skill-card">Linux</span>
-        <span class="skill-card">AWS</span>
-        <span class="skill-card">Azure</span>
-        <span class="skill-card">GitLab CI</span>
-        <span class="skill-card">ArgoCD</span>
-        <span class="skill-card">Helm</span>
-        <span class="skill-card">Python</span>
-        <span class="skill-card">Bash</span>
-        <span class="skill-card">Ansible</span>
-        <span class="skill-card">Prometheus</span>
-        <span class="skill-card">Grafana</span>
-        <span class="skill-card">Loki</span>
-        <span class="skill-card">Splunk</span>
-        <span class="skill-card">Java</span>
-        <span class="skill-card">GitHub</span>
-        <span class="skill-card">Git</span>
-        <span class="skill-card">DNS</span>
-        <span class="skill-card">TCP/IP</span>
-        <span class="skill-card">NGINX</span>
-        <span class="skill-card">HAProxy</span>
-      </div>
-    </section>
-
     <section class="section" id="projects">
       <div class="section-heading">
         <div class="eyebrow">Projects</div>
@@ -145,6 +122,36 @@
             <a class="link-button" href="https://GuyT2002.github.io" target="_blank">Visit site</a>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-heading">
+        <div class="eyebrow">Skills</div>
+        <h2>Core competencies</h2>
+      </div>
+      <div class="skill-grid">
+        <span class="skill-card">Kubernetes / OpenShift</span>
+        <span class="skill-card">Linux</span>
+        <span class="skill-card">AWS</span>
+        <span class="skill-card">Azure</span>
+        <span class="skill-card">GitLab CI</span>
+        <span class="skill-card">ArgoCD</span>
+        <span class="skill-card">Helm</span>
+        <span class="skill-card">Python</span>
+        <span class="skill-card">Bash</span>
+        <span class="skill-card">Ansible</span>
+        <span class="skill-card">Prometheus</span>
+        <span class="skill-card">Grafana</span>
+        <span class="skill-card">Loki</span>
+        <span class="skill-card">Splunk</span>
+        <span class="skill-card">Java</span>
+        <span class="skill-card">GitHub</span>
+        <span class="skill-card">Git</span>
+        <span class="skill-card">DNS</span>
+        <span class="skill-card">TCP/IP</span>
+        <span class="skill-card">NGINX</span>
+        <span class="skill-card">HAProxy</span>
       </div>
     </section>
 
@@ -192,6 +199,53 @@
       });
 
       animateElements.forEach((el) => observer.observe(el));
+
+      const slides = Array.from(document.querySelectorAll('.hero-bg-slide'));
+      const prevButton = document.querySelector('.hero-slide-control.prev');
+      const nextButton = document.querySelector('.hero-slide-control.next');
+      let currentSlide = 0;
+      let slideInterval = null;
+
+      const updateSlide = (nextIndex) => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (nextIndex + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+      };
+
+      const startSlider = () => {
+        slideInterval = setInterval(() => updateSlide(currentSlide + 1), 7000);
+      };
+
+      const resetSlider = () => {
+        clearInterval(slideInterval);
+        startSlider();
+      };
+
+      if (slides.length) {
+        startSlider();
+      }
+
+      if (prevButton) {
+        prevButton.addEventListener('click', () => {
+          updateSlide(currentSlide - 1);
+          resetSlider();
+        });
+      }
+
+      if (nextButton) {
+        nextButton.addEventListener('click', () => {
+          updateSlide(currentSlide + 1);
+          resetSlider();
+        });
+      }
+
+      const heroBg = document.querySelector('.hero-bg');
+      window.addEventListener('scroll', () => {
+        const offset = Math.min(window.scrollY * 0.15, 80);
+        if (heroBg) {
+          heroBg.style.transform = `translateY(${offset}px)`;
+        }
+      });
     });
   </script>
 </body>

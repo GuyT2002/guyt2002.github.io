@@ -93,7 +93,16 @@ button,
   overflow: hidden;
 }
 
-.hero::before {
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  transform: translateY(0);
+  transition: transform 0.2s ease-out;
+}
+
+.hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -103,6 +112,54 @@ button,
   pointer-events: none;
   opacity: 0.75;
   animation: floatGradient 28s ease-in-out infinite;
+  z-index: 1;
+}
+
+.hero-bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  z-index: 0;
+}
+
+.hero-bg-slide.active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.hero-slide-control {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(5, 8, 20, 0.7);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-slide-control:hover {
+  transform: translateY(-2px);
+  background: rgba(79, 142, 247, 0.22);
+}
+
+.hero-slide-control.prev {
+  left: 1.25rem;
+}
+
+.hero-slide-control.next {
+  right: 1.25rem;
 }
 
 .hero-inner {
