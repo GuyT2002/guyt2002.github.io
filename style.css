@@ -988,3 +988,100 @@ main {
      -moz-border-radius: 4px;
           border-radius: 4px;
 }
+
+/* Clickable project cards */
+.project-card[data-project] { cursor: pointer; }
+.project-card[data-project]:focus-visible {
+  outline: 2px solid #4f8ef7;
+  outline-offset: 4px;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(5, 8, 20, 0.82);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Modal card */
+.modal-card {
+  background: #0d1124;
+  border: 1px solid rgba(79, 142, 247, 0.2);
+  border-radius: 18px;
+  padding: 2.5rem;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(28px);
+  transition: transform 0.25s ease;
+}
+.modal-backdrop.open .modal-card { transform: translateY(0); }
+
+.modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8f9bb3;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.25rem;
+  transition: color 0.15s;
+}
+.modal-close:hover { color: #e8ebff; }
+
+.modal-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c9dff;
+  margin-bottom: 0.5rem;
+}
+.modal-title {
+  font-size: 1.5rem;
+  color: #e8ebff;
+  margin: 0 0 1rem;
+}
+.modal-body {
+  color: #c8cee8;
+  line-height: 1.9;
+  margin-bottom: 1.25rem;
+}
+.modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.modal-tech span {
+  background: rgba(79, 142, 247, 0.12);
+  color: #7c9dff;
+  border: 1px solid rgba(79, 142, 247, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+@media (max-width: 520px) {
+  .modal-card { padding: 1.75rem 1.25rem; }
+  .modal-title { font-size: 1.25rem; }
+}

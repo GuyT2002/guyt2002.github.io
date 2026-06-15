@@ -83,24 +83,24 @@
         <h2>Selected work</h2>
       </div>
       <div class="projects-grid">
-        <article class="project-card">          <div class="label">GitOps Platform</div>
+        <article class="project-card animate-on-scroll" data-project="gitops" role="button" tabindex="0">          <div class="label">GitOps Platform</div>
           <h3>Multi-Cluster GitOps Platform</h3>
           <p>Designed and operated a GitOps deployment platform using ArgoCD across multiple Kubernetes clusters and regions. Enforced declarative infrastructure state, enabled rollback-on-failure, and increased deployment frequency by 40% while improving production stability.</p>
         </article>
 
-        <article class="project-card">
+        <article class="project-card animate-on-scroll" data-project="observability" role="button" tabindex="0">
           <div class="label">Observability</div>
           <h3>Production Observability Stack</h3>
           <p>Built a full-stack distributed monitoring and logging system from the ground up, covering metrics, traces, and logs across microservices in a multicluster Linux environment. Reduced MTTR by 30% through automated alerting and root-cause analysis tooling.</p>
         </article>
 
-        <article class="project-card">
+        <article class="project-card animate-on-scroll" data-project="devplatform" role="button" tabindex="0">
           <div class="label">Developer Platform</div>
           <h3>Internal Developer Platform APIs</h3>
           <p>Designed and built self-service automation APIs for 100+ engineering teams, abstracting Kubernetes operations into developer-friendly workflows. Reduced manual operational workload by 40% and accelerated team onboarding to the platform.</p>
         </article>
 
-        <article class="project-card">          <div class="label">Java / Modding</div>
+        <article class="project-card animate-on-scroll" data-project="neoforge" role="button" tabindex="0">          <div class="label">Java / Modding</div>
           <h3>NeoForge Tinkerers Mod</h3>
           <p>Built a Minecraft mod to learn Java and OOP fundamentals, including interfaces, class hierarchies, event loops, and game architecture.</p>
           <div class="project-footer">
@@ -108,7 +108,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card animate-on-scroll" data-project="portfolio" role="button" tabindex="0">
           <div class="label">Portfolio</div>
           <h3>Personal website</h3>
           <p>Designed and deployed this site using GitHub Pages to showcase my skills, projects, and approach to modern DevOps engineering.</p>
@@ -219,6 +219,17 @@
     <span>Designed for a modern DevOps portfolio.</span>
     <span>Built by GuyT2002.</span>
   </footer>
+  <div id="project-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close">&#x2715;</button>
+      <div class="modal-label"></div>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <p class="modal-body"></p>
+      <div class="modal-tech"></div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const animateElements = document.querySelectorAll('.animate-on-scroll');
@@ -280,6 +291,93 @@
         if (heroBg) {
           heroBg.style.transform = `translateY(${offset}px)`;
         }
+      });
+
+      // Project detail modals
+      const PROJECTS = {
+        gitops: {
+          label: 'GitOps Platform',
+          title: 'Multi-Cluster GitOps Platform',
+          body: 'Designed and deployed a GitOps platform across multiple Kubernetes clusters using ArgoCD, Helm, and GitHub Actions. Reduced deployment lead time by 40% and eliminated manual kubectl operations for 100+ developers. Includes ApplicationSets, progressive delivery, and automated rollback on health failures.',
+          tech: ['ArgoCD', 'Kubernetes', 'Helm', 'GitHub Actions', 'GKE'],
+          link: null,
+        },
+        observability: {
+          label: 'Observability',
+          title: 'Production Observability Stack',
+          body: 'Built a full-stack observability platform integrating metrics, logs, and traces for a production Kubernetes environment. Replaced fragmented tooling with a unified stack that reduced mean-time-to-resolution (MTTR) by 30% and enabled SLO-based alerting.',
+          tech: ['Prometheus', 'Grafana', 'Loki', 'OpenTelemetry', 'Kubernetes'],
+          link: null,
+        },
+        devplatform: {
+          label: 'Developer Platform',
+          title: 'Internal Developer APIs',
+          body: 'Implemented a self-service Kubernetes platform for 100+ engineering teams using custom controllers and CRDs. Teams provision environments, secrets, and networking through a simple YAML API without touching infrastructure directly.',
+          tech: ['Kubernetes', 'CRDs', 'Go', 'Crossplane', 'Backstage'],
+          link: null,
+        },
+        neoforge: {
+          label: 'Java / Modding',
+          title: 'NeoForge Tinkerers Mod',
+          body: 'A Minecraft mod built on the NeoForge 1.21 modloader as a hands-on project to learn Java and object-oriented design patterns. Implements custom items, crafting recipes, and game mechanics using the NeoForge event system.',
+          tech: ['Java', 'NeoForge', 'Gradle', 'OOP'],
+          link: 'https://github.com/GuyT2002/NeoForge-Tinkerers-1.21',
+        },
+        portfolio: {
+          label: 'Portfolio',
+          title: 'Personal Portfolio Website',
+          body: 'This site — built from scratch with semantic HTML5, modern CSS (Grid, Flexbox, custom properties), and vanilla JavaScript. No frameworks or build tools. Deployed on GitHub Pages with automatic updates on push to master.',
+          tech: ['HTML5', 'CSS3', 'JavaScript', 'GitHub Pages'],
+          link: 'https://GuyT2002.github.io',
+        },
+        jobsmatch: {
+          label: 'Job Search · AI',
+          title: 'JobsMatch',
+          body: 'Full-stack job-search platform that scrapes LinkedIn, Glassdoor, Indeed, and RemoteOK in parallel using python-jobspy. Results stream to the frontend via Server-Sent Events as each source completes. Authenticated users can upload a CV and get a cosine-similarity match score between their CV embedding and any job\'s description — computed on-demand using sentence-transformers and stored in PostgreSQL with pgvector. Built with FastAPI + React, deployed on GKE via ArgoCD.',
+          tech: ['FastAPI', 'React', 'PostgreSQL', 'pgvector', 'Auth0', 'SSE', 'Docker', 'GKE', 'ArgoCD'],
+          link: 'https://jobs.guyts.org',
+        },
+      };
+
+      const backdrop = document.getElementById('project-modal');
+      const mLabel   = backdrop.querySelector('.modal-label');
+      const mTitle   = backdrop.querySelector('.modal-title');
+      const mBody    = backdrop.querySelector('.modal-body');
+      const mTech    = backdrop.querySelector('.modal-tech');
+      const mFooter  = backdrop.querySelector('.modal-footer');
+
+      function openModal(key) {
+        const p = PROJECTS[key];
+        if (!p) return;
+        mLabel.textContent = p.label;
+        mTitle.textContent = p.title;
+        mBody.textContent  = p.body;
+        mTech.innerHTML    = p.tech.map(function(t) { return '<span>' + t + '</span>'; }).join('');
+        mFooter.innerHTML  = p.link
+          ? '<a class="btn btn-primary" href="' + p.link + '" target="_blank" rel="noopener noreferrer">Visit project &rarr;</a>'
+          : '';
+        backdrop.setAttribute('aria-hidden', 'false');
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        backdrop.classList.remove('open');
+        backdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      backdrop.querySelector('.modal-close').addEventListener('click', closeModal);
+      backdrop.addEventListener('click', function(e) { if (e.target === backdrop) closeModal(); });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
+      });
+
+      document.querySelectorAll('.project-card[data-project]').forEach(function(card) {
+        card.addEventListener('click', function() { openModal(card.dataset.project); });
+        card.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.project); }
+        });
       });
     });
   </script>
