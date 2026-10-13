@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="GuyT2002 is a DevOps engineer with 5 years of experience in cloud infrastructure, automation, GitOps, and observability.">
-  <title>GuyT2002 | DevOps Engineer</title>
+  <meta name="description" content="GuyT2002 is an MLOps engineer with 5 years of experience in cloud infrastructure, automation, GitOps, and machine learning platforms.">
+  <title>GuyT2002 | MLOps Engineer</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,7 +12,7 @@
   <header class="site-header">
     <div class="brand">
       <div class="brand-name">GuyT2002</div>
-      <div class="brand-tag">DevOps Engineer • 5 years experience</div>
+      <div class="brand-tag">MLOps Engineer • 5 years experience</div>
     </div>
     <nav class="nav-links">
       <a href="#about">About</a>
@@ -26,9 +26,9 @@
     <section class="hero" id="home">
       <div class="hero-bg"></div>
       <div class="hero-inner">
-        <p class="eyebrow animate-on-scroll">Infrastructure • Automation • Observability</p>
-        <h1 class="hero-title animate-on-scroll">Modern DevOps engineering for cloud-native teams.</h1>
-        <p class="hero-copy animate-on-scroll">I build and operate resilient platforms using Kubernetes, GitOps, CI/CD, and observability tooling. My work is focused on secure, automated delivery pipelines and scalable infrastructure.</p>
+        <p class="eyebrow animate-on-scroll">MLOps • Automation • Infrastructure</p>
+        <h1 class="hero-title animate-on-scroll">MLOps platforms built for teams and real-world environments.</h1>
+        <p class="hero-copy animate-on-scroll">I build and operate resilient platforms for machine learning and software teams, combining automated model workflows with Kubernetes, cloud infrastructure, CI/CD, and observability.</p>
         <div class="cta-group animate-on-scroll">
           <a class="btn btn-primary" href="#contact">Work with me</a>
           <a class="btn btn-secondary" href="#projects">See projects</a>
@@ -54,8 +54,8 @@
         <h2>Hi, I’m GuyT2002.</h2>
       </div>
       <div class="card">
-        <p class="about-lead">I’m a DevOps engineer with 5 years of hands-on experience designing and operating cloud infrastructure across AWS, Azure, and on-prem environments.</p>
-        <p class="about-lead">I specialize in Kubernetes/OpenShift, GitOps workflows, CI/CD automation, monitoring, and secure platform operations.</p>
+        <p class="about-lead">I’m an MLOps engineer with 5 years of hands-on experience designing and operating cloud infrastructure across AWS, Azure, and on-prem environments.</p>
+        <p class="about-lead">I specialize in Kubernetes/OpenShift, GitOps workflows, CI/CD automation, model testing and training workflows, monitoring, and secure platform operations.</p>
         <div class="category-grid">
           <article class="category-card">
             <strong>Cloud & Infrastructure</strong>
@@ -111,7 +111,7 @@
         <article class="project-card animate-on-scroll" data-project="portfolio" role="button" tabindex="0">
           <div class="label">Portfolio</div>
           <h3>Personal website</h3>
-          <p>Designed and deployed this site using GitHub Pages to showcase my skills, projects, and approach to modern DevOps engineering.</p>
+          <p>Designed and deployed this site using GitHub Pages to showcase my skills, projects, and approach to modern MLOps engineering.</p>
           <div class="project-footer">
             <a class="link-button" href="https://GuyT2002.github.io" target="_blank">Visit site</a>
           </div>
@@ -124,6 +124,18 @@
           <div class="project-footer">
             <a class="link-button" href="https://jobs.guyts.org" target="_blank" rel="noopener noreferrer">Visit →</a>
           </div>
+        </article>
+
+        <article class="project-card animate-on-scroll" data-project="holmesgpt" role="button" tabindex="0">
+          <div class="label">MLOps · Incident Response</div>
+          <h3>HolmesGPT for Remote Client Sites</h3>
+          <p>Introduced HolmesGPT to reduce root-cause analysis time by over 80% at remote client sites. Automated model testing and training, and tailored installations for air-gapped environments with validated models and GPU infrastructure adapted to client needs.</p>
+        </article>
+
+        <article class="project-card animate-on-scroll" data-project="jenkins" role="button" tabindex="0">
+          <div class="label">Developer Platform · Azure</div>
+          <h3>Jenkins Platform for Software Teams</h3>
+          <p>Managed Jenkins for hundreds of software development teams, leading automation projects for infrastructure upgrades and client environment isolation. Supported development of hundreds of AI-powered applications and worked with Azure.</p>
         </article>
       </div>
     </section>
@@ -216,7 +228,7 @@
   </main>
 
   <footer class="footer">
-    <span>Designed for a modern DevOps portfolio.</span>
+    <span>Designed for a modern MLOps portfolio.</span>
     <span>Built by GuyT2002.</span>
   </footer>
   <div id="project-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -336,6 +348,20 @@
           body: 'Full-stack job-search platform that scrapes LinkedIn, Glassdoor, Indeed, and RemoteOK in parallel using python-jobspy. Results stream to the frontend via Server-Sent Events as each source completes. Authenticated users can upload a CV and get a cosine-similarity match score between their CV embedding and any job\'s description — computed on-demand using sentence-transformers and stored in PostgreSQL with pgvector. Built with FastAPI + React, deployed on GKE via ArgoCD.',
           tech: ['FastAPI', 'React', 'PostgreSQL', 'pgvector', 'Auth0', 'SSE', 'Docker', 'GKE', 'ArgoCD'],
           link: 'https://jobs.guyts.org',
+        },
+        holmesgpt: {
+          label: 'MLOps · Incident Response',
+          title: 'HolmesGPT for Remote Client Sites',
+          body: 'Introduced HolmesGPT to reduce root-cause analysis time by over 80% at remote client sites. Automated model testing and training workflows, and tailored installations for air-gapped environments with validated models and GPU infrastructure adapted to client needs.',
+          tech: ['HolmesGPT', 'MLOps', 'Model Testing', 'Model Training', 'Air-Gapped Deployments', 'GPU Infrastructure'],
+          link: null,
+        },
+        jenkins: {
+          label: 'Developer Platform · Azure',
+          title: 'Jenkins Platform for Software Teams',
+          body: 'Managed Jenkins for hundreds of software development teams. Led automation projects for infrastructure upgrades and client environment isolation, supporting development of hundreds of AI-powered applications. Proficient with Azure.',
+          tech: ['Jenkins', 'Azure', 'Infrastructure Automation', 'Environment Isolation', 'AI Applications'],
+          link: null,
         },
       };
 

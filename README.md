@@ -1,15 +1,20 @@
 
-# Guy — DevOps Engineer
+# Guy — MLOps Engineer
 
-Hello — I'm Guy, a DevOps engineer with over 5 years of experience building reliable, automated infrastructure and delivery pipelines. I created this website using GitHub Pages as a static host to provide a quick introduction about who I am and to showcase my work and projects.
+Hello — I'm Guy, an MLOps engineer with over 5 years of experience building reliable infrastructure and automated delivery platforms across cloud and on-premises environments. This portfolio introduces my work and selected projects.
 
 ## About
 
-I focus on automation, CI/CD, cloud infrastructure, containers, and infrastructure as code. I enjoy designing systems that are observable, scalable, and secure — and I like sharing what I build so others can learn from my work.
+I focus on MLOps automation, model testing and training, CI/CD, cloud infrastructure, containers, and infrastructure as code. I enjoy building platforms that are observable, scalable, and secure.
+
+## Selected Projects
+
+- **HolmesGPT at remote client sites:** Introduced HolmesGPT and automated model testing and training, reducing root-cause analysis time by over 80%. Tailored installations for air-gapped environments with validated models and GPU infrastructure adapted to client needs.
+- **Jenkins platform for software teams:** Managed Jenkins for hundreds of software development teams. Led infrastructure upgrade automation and client environment isolation, supporting the development of hundreds of AI-powered applications. Proficient with Azure.
 
 ## This Site
 
-This is a simple static site hosted on GitHub Pages. It's intentionally lightweight so it loads quickly and serves as a small portfolio and contact hub.
+This lightweight static site is hosted on GitHub Pages and serves as a portfolio and contact hub.
 
 ## Contact
 
